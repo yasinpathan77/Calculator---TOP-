@@ -1,0 +1,36 @@
+body {
+    height: 100vh;
+}
+
+.largeButton {
+    flex-grow: 2;
+}
+
+tr {
+    width: 200px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.centerByFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+td {
+    border: 1px solid black;
+    height: 30px;
+    width: 50px;
+}
+
+body {
+    text-align: center;
+}
+
+.display {
+    text-align: right;
+    padding-right: 5px;
+}
