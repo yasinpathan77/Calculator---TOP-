@@ -1,5 +1,6 @@
-let firstNumber = 0, secondNumber = 0, operator = "+";
+let firstNumber = 0, secondNumber = 0, operator = "";
 let displayNumber = 0;
+let display = document.querySelector(".display");
 
 function Add(a, b) {
     return a + b;
@@ -34,10 +35,17 @@ function Populate() {
             SetDisplayNumber(value)
         });
     });
+
+    document.querySelectorAll(".funcionality").forEach((element) => {
+        element.addEventListener("click", (data) => {
+            let value = element.getAttribute("data-functionality");
+            console.log(value);
+            CalculateValue(value);
+        });
+    })
 }
 
 function SetDisplayNumber(num) {
-    var display = document.querySelector(".display");
     if (displayNumber === 0) {
         if (num === '0') return;
         displayNumber = num;
@@ -49,6 +57,50 @@ function SetDisplayNumber(num) {
     display.innerText = displayNumber;
 }
 
+function CalculateValue(value) {
+    if (operator === "") operator = value;
+
+    if (firstNumber === 0 && value !== "=") {
+        firstNumber = displayNumber;
+        displayNumber = 0;
+    }
+    else if ((secondNumber === 0 || value === "=") && displayNumber !== 0) {
+        secondNumber = displayNumber;
+        firstNumber = Operate(Number(firstNumber), Number(secondNumber), operator);
+        display.innerText = firstNumber;
+        SetDefaultValue();
+    }
+}
+
+function SetDefaultValue() {
+    secondNumber = 0;
+    displayNumber = 0;
+    operator = "";
+}
+
+document.getElementById("clear").addEventListener(("click"), () => {
+    SetDefaultValue();
+    firstNumber = 0;
+    display.innerText = 0;
+})
+
+document.getElementById("invert").addEventListener(("click"), () => {
+    if (displayNumber === 0) return;
+    display.innerText = (display.innerText.includes('-')) ? display.innerText.slice(1) : "-" + display.innerText;
+    displayNumber = display.innerText;
+});
+
+document.getElementById("percentage").addEventListener(("click"), () => {
+    displayNumber *= 0.01;
+    display.innerText = displayNumber;
+});
+
+document.getElementById("backspace").addEventListener(("click"), () => {
+    if (display.innerText === "0") return;
+    var displayText = display.innerText.slice(0, -1);
+    displayNumber = (displayText === "" || displayText === "-") ? 0 : displayText;
+    display.innerText = displayNumber;
+})
 
 window.onload = Populate();
 
