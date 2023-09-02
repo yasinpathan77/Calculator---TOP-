@@ -24,7 +24,7 @@ function Operate(fNumber, sNumber, operat) {
     else if (operat === "-") return Subtract(fNumber, sNumber);
     else if (operat === "*") return Multiply(fNumber, sNumber);
     else if (operat === "/") return Divide(fNumber, sNumber);
-    else return "Error";
+    else return fNumber + sNumber;
 }
 
 function Populate() {
@@ -64,7 +64,7 @@ function CalculateValue(value) {
         firstNumber = displayNumber;
         displayNumber = 0;
     }
-    else if ((secondNumber === 0 || value === "=") && displayNumber !== 0) {
+    else if ((secondNumber === 0 || value === "=") && (displayNumber !== 0 || firstNumber !== 0)) {
         secondNumber = displayNumber;
         firstNumber = RoundTwoDecimal(Operate(Number(firstNumber), Number(secondNumber), operator));
         display.innerText = firstNumber;
