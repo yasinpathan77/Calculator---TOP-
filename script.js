@@ -66,10 +66,22 @@ function CalculateValue(value) {
     }
     else if ((secondNumber === 0 || value === "=") && displayNumber !== 0) {
         secondNumber = displayNumber;
-        firstNumber = Operate(Number(firstNumber), Number(secondNumber), operator);
+        firstNumber = RoundTwoDecimal(Operate(Number(firstNumber), Number(secondNumber), operator));
         display.innerText = firstNumber;
         SetDefaultValue();
     }
+}
+
+function RoundTwoDecimal(num) {
+    var numberString = num.toString();
+    if (numberString.includes('.')) {
+        var fractionalPart = numberString.split('.')[1];
+
+        if (fractionalPart.length > 5) {
+            return num.toFixed(2);
+        }
+    }
+    return num;
 }
 
 function SetDefaultValue() {
