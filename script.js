@@ -15,7 +15,7 @@ function Multiply(a, b) {
 }
 
 function Divide(a, b) {
-    if (b == 0) return "Can't Divide with zero";
+    if (b == 0) alert("Can't Divide with zero");
     return a / b;
 }
 
@@ -113,6 +113,18 @@ document.getElementById("backspace").addEventListener(("click"), () => {
     displayNumber = (displayText === "" || displayText === "-") ? 0 : displayText;
     display.innerText = displayNumber;
 })
+
+document.addEventListener('keypress', (event) => {
+    var key = event.key;
+    var operators = ["*", "/", "+", "-", "="];
+    console.log(key);
+
+    if ((key >= 0 && key <= 9 && key !== " ") || key === ".")
+        SetDisplayNumber(key);
+    if (operators.includes(key))
+        CalculateValue(key);
+
+}, false);
 
 window.onload = Populate();
 
