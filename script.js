@@ -39,6 +39,13 @@ function Populate() {
     document.querySelectorAll(".funcionality").forEach((element) => {
         element.addEventListener("click", (data) => {
             let value = element.getAttribute("data-functionality");
+
+            let lastClickedElement = document.querySelectorAll(".click");
+            if (lastClickedElement[0] !== undefined)
+                lastClickedElement[0].classList.toggle('click');
+            if (value !== "=") {
+                element.classList.toggle('click');
+            }
             console.log(value);
             CalculateValue(value);
         });
@@ -60,15 +67,20 @@ function SetDisplayNumber(num) {
 function CalculateValue(value) {
     if (operator === "") operator = value;
 
+
     if (firstNumber === 0 && value !== "=") {
         firstNumber = displayNumber;
         displayNumber = 0;
     }
-    else if ((secondNumber === 0 || value === "=") && (displayNumber !== 0 || firstNumber !== 0)) {
+    else if ((secondNumber === 0 || value === "=") && displayNumber !== 0) {
         secondNumber = displayNumber;
         firstNumber = RoundTwoDecimal(Operate(Number(firstNumber), Number(secondNumber), operator));
         display.innerText = firstNumber;
         SetDefaultValue();
+    }
+
+    if (operator !== value && value !== "=") {
+        operator = value;
     }
 }
 
@@ -87,7 +99,6 @@ function RoundTwoDecimal(num) {
 function SetDefaultValue() {
     secondNumber = 0;
     displayNumber = 0;
-    operator = "";
 }
 
 function CalculatePercentage() {
@@ -102,10 +113,18 @@ function BackspaceDisplayValue() {
     display.innerText = displayNumber;
 }
 
+function sleep(seconds) {
+    var e = new Date().getTime() + (seconds * 1000);
+    while (new Date().getTime() <= e) { }
+}
+
 document.getElementById("clear").addEventListener(("click"), () => {
     SetDefaultValue();
     firstNumber = 0;
     display.innerText = 0;
+    let selectedElement = document.querySelectorAll(".click");
+    if (selectedElement[0] !== undefined)
+        selectedElement[0].classList.toggle("click");
 })
 
 document.getElementById("invert").addEventListener(("click"), () => {

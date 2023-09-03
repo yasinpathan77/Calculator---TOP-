@@ -1,5 +1,8 @@
 body {
     height: 100vh;
+    background-color: black;
+        color: white;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .largeButton {
@@ -17,13 +20,22 @@ table {
 .centerByFlex {
     display: flex;
     justify-content: center;
+    gap: 100px;
     align-items: center;
+    flex-direction: column;
+    }
+    
+    h1 {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 50px;
+        letter-spacing: 10px;
 }
 
 td {
     border: 1px solid black;
     height: 30px;
     width: 50px;
+    border-radius: 5%;
 }
 
 body {
@@ -33,4 +45,59 @@ body {
 .display {
     text-align: right;
     padding-right: 5px;
+    border-bottom-color: blanchedalmond;
+        border-right-color: #ff4da5;
+    }
+    
+    #backspace {
+        border-color: #ff4da5;
+    }
+    
+    #backspace>img {
+        filter: invert(21%) sepia(79%) saturate(3326%) hue-rotate(316deg) brightness(103%) contrast(102%);
+    }
+    
+    .funcionality {
+        color: #9933ff;
+        border-color: #a64dff;
+    
+    }
+    
+    tr td:nth-child(3),
+    tr:nth-child(6) td:nth-child(2) {
+        border-right-color: #a64dff;
+    }
+    
+    
+    
+    #clear,
+    #percentage,
+    #invert {
+        color: blanchedalmond;
+        border-color: blanchedalmond;
+    }
+    
+    
+    .number:hover,
+    .funcionality:hover,
+    #clear:hover,
+    #percentage:hover,
+    #invert:hover,
+    #backspace:hover {
+        background-color: darkgray;
+    }
+    
+    
+    .number:active,
+    .funcionality:active,
+    #clear:active,
+    #percentage:active,
+    #invert:active,
+    #backspace:active {
+        background-color: black;
+    }
+    
+    
+    .click {
+        background-color: lightgreen;
 }
