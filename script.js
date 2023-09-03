@@ -90,6 +90,18 @@ function SetDefaultValue() {
     operator = "";
 }
 
+function CalculatePercentage() {
+    displayNumber *= 0.01;
+    display.innerText = displayNumber;
+}
+
+function BackspaceDisplayValue() {
+    if (display.innerText === "0") return;
+    var displayText = display.innerText.slice(0, -1);
+    displayNumber = (displayText === "" || displayText === "-") ? 0 : displayText;
+    display.innerText = displayNumber;
+}
+
 document.getElementById("clear").addEventListener(("click"), () => {
     SetDefaultValue();
     firstNumber = 0;
@@ -102,29 +114,26 @@ document.getElementById("invert").addEventListener(("click"), () => {
     displayNumber = display.innerText;
 });
 
-document.getElementById("percentage").addEventListener(("click"), () => {
-    displayNumber *= 0.01;
-    display.innerText = displayNumber;
-});
+document.getElementById("percentage").addEventListener(("click"), CalculatePercentage);
 
-document.getElementById("backspace").addEventListener(("click"), () => {
-    if (display.innerText === "0") return;
-    var displayText = display.innerText.slice(0, -1);
-    displayNumber = (displayText === "" || displayText === "-") ? 0 : displayText;
-    display.innerText = displayNumber;
-})
+document.getElementById("backspace").addEventListener(("click"), BackspaceDisplayValue)
 
 document.addEventListener('keypress', (event) => {
     var key = event.key;
     var operators = ["*", "/", "+", "-", "="];
-    console.log(key);
 
     if ((key >= 0 && key <= 9 && key !== " ") || key === ".")
         SetDisplayNumber(key);
     if (operators.includes(key))
         CalculateValue(key);
+    if (key === "%")
+        CalculatePercentage();
 
 }, false);
+
+document.addEventListener('keydown', (event) => {
+    if (event.key == "Backspace") BackspaceDisplayValue();
+})
 
 window.onload = Populate();
 
