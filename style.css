@@ -1,5 +1,7 @@
 body {
     background-color: black;
+    flex-direction: column;
+        height: 100vh;
         color: white;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -21,12 +23,10 @@ table {
     justify-content: center;
     gap: 100px;
     align-items: center;
-    flex-direction: column;
     }
     
     h1 {
         font-family: 'Times New Roman', Times, serif;
-        font-size: 50px;
         letter-spacing: 10px;
 }
 
