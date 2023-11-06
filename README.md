@@ -10,7 +10,7 @@ The Calculator project is a basic web application that performs arithmetic opera
 
 ## Demo
 
-[Live Demo](https://your-username.github.io/calculator)
+[Live Demo](https://yasinpathan77.github.io/Calculator---TOP-)
 
 Check out the live demo to interact with the calculator.
 
@@ -19,9 +19,6 @@ Check out the live demo to interact with the calculator.
 - **Arithmetic Operations:** Addition, subtraction, multiplication, and division.
 - **User Interface:** Clean and intuitive design for easy usability.
 
-## Screenshots
-
-![Calculator UI](screenshots/calculator-ui.png)
 
 ## Technologies Used
 
